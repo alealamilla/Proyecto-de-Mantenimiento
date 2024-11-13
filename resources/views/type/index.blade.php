@@ -12,9 +12,9 @@
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
-                            <span id="card_title">
-                                {{ __('Type') }}
-                            </span>
+                        <h4 id="card_title" class="text-primary text-uppercase">
+                            <i class="mdi--note-edit"></i> TITULO
+                        </h4>
 
                              <div class="float-right">
                                 <a href="{{ route('types.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
