@@ -61,7 +61,7 @@ class BrandController extends Controller
     public function edit($id)
     {
         $brand = Brand::find($id);
-        $this->authorize("update", Brand::class);
+        $this->authorize("update", $brand);
 
         return view('brand.edit', compact('brand'));
     }
@@ -72,7 +72,7 @@ class BrandController extends Controller
     public function update(BrandRequest $request, Brand $brand)
     {
         $brand->update($request->validated());
-        $this->authorize("update", Brand::class);
+        $this->authorize("update", $brand);
 
         return redirect()->route('brands.index')
             ->with('success', 'Brand updated successfully');

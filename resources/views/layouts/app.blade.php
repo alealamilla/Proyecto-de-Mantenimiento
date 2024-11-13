@@ -79,7 +79,7 @@
                     </li>
                     <li>
                         <a href="{{ route('works.index') }}" class="ms-2">
-                            <i class="fas fa-list"></i>
+                            <span class="fluent-mdl2--family"></span>
                             Trabajos
                         </a>
                     </li>
