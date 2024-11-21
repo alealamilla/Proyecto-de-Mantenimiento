@@ -5,27 +5,27 @@
 @endsection
 
 @section('content')
-    <section class="content container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
-                        <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Owner</span>
-                        </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary btn-sm" href="{{ route('owners.index') }}"> {{ __('Back') }}</a>
-                        </div>
-                    </div>
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-12">
 
-                    <div class="card-body bg-white">
+            <div class="card bg-primary-soft border-0 p-3t">
+                <div class="card-header bg-transparent border-0">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 id="card_title" class="text-primary text-uppercase">
+                            <span class="fluent--people-list-16-filled"></span> Propietario
+                        </h4>
+                    </div>
+                </div>
+
+                    <div class="card-body ">
                         
                         <div class="form-group mb-2 mb20">
-                            <strong>Name:</strong>
+                            <strong>Nombre:</strong>
                             {{ $owner->name }}
                         </div>
                         <div class="form-group mb-2 mb20">
-                            <strong>Phone:</strong>
+                            <strong>Telefono:</strong>
                             {{ $owner->phone }}
                         </div>
                         <div class="form-group mb-2 mb20">

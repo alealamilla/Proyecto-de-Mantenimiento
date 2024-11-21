@@ -5,22 +5,16 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card bg-primary-soft border-0 p-3">
+                <div class="card-header bg-transparent border-0">
+                    <div class="d-flex justify-content-between align-items-center">
 
-                            <span id="card_title">
-                                {{ __('Car') }}
-                            </span>
-
-                             <div class="float-right">
-                                <a href="{{ route('cars.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
-                                </a>
-                              </div>
+                        <h4 id="card_title" class="text-primary text-uppercase">
+                            <span class="ph--car-profile"></span> Vehículos
+                        </h4>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -34,14 +28,12 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
-                                        
-										<th>Owner Id</th>
-										<th>Color Id</th>
-										<th>Brand Id</th>
-										<th>Type Id</th>
+										<th>Propietario</th>
+										<th>Color </th>
+										<th>Marca</th>
+										<th>Modelo</th>
 										<th>Placas</th>
-										<th>Year</th>
+										<th>Año</th>
 
                                         <th></th>
                                     </tr>
@@ -49,12 +41,11 @@
                                 <tbody>
                                     @foreach ($cars as $car)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
                                             
-											<td>{{ $car->owner_id }}</td>
-											<td>{{ $car->color_id }}</td>
-											<td>{{ $car->brand_id }}</td>
-											<td>{{ $car->type_id }}</td>
+											<td>{{ $car->owner->name }}</td>
+											<td>{{ $car->color->name }}</td>
+											<td>{{ $car->brand->name }}</td>
+											<td>{{ $car->type->name }}</td>
 											<td>{{ $car->placas }}</td>
 											<td>{{ $car->year }}</td>
 

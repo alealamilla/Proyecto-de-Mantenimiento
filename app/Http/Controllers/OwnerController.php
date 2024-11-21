@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Owner;
 use App\Http\Requests\OwnerRequest;
+use App\Models\Brand;
+use App\Models\Car;
+use App\Models\Color;
+use App\Models\Type;
 
 /**
  * Class OwnerController
@@ -38,10 +42,12 @@ class OwnerController extends Controller
      */
     public function store(OwnerRequest $request)
     {
-        Owner::create($request->validated());
+        $owner = Owner::create($request->validated());
         $this->authorize("create", Owner::class);
-        return redirect()->route('owners.index')
-            ->with('success', 'Owner created successfully.');
+        $id = $owner->id;
+
+        return redirect()->route('owners.edit', $id)
+            ->with('success', 'Propietario guardado, ahora puedes agregar sus vehículos.');
     }
 
     /**
@@ -60,9 +66,13 @@ class OwnerController extends Controller
     public function edit($id)
     {
         $owner = Owner::find($id);
+        $car = new Car();
+        $colors = Color::all();
+        $brands = Brand::all();
+        $types = Type::all();
         $this->authorize("update", $owner);
 
-        return view('owner.edit', compact('owner'));
+        return view('owner.edit', compact('owner','car','colors','brands','types'));
     }
 
     /**
@@ -74,7 +84,7 @@ class OwnerController extends Controller
         $this->authorize("update", $owner);
 
         return redirect()->route('owners.index')
-            ->with('success', 'Owner updated successfully');
+            ->with('success', 'Propietario Actualizado con exito');
     }
 
     public function destroy($id)
@@ -82,6 +92,6 @@ class OwnerController extends Controller
         Owner::find($id)->delete();
 
         return redirect()->route('owners.index')
-            ->with('success', 'Owner deleted successfully');
+            ->with('success', 'Propietario borrado con exito');
     }
 }

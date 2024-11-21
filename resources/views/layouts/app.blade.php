@@ -71,18 +71,26 @@
                             Inicio
                         </a>
                     </li>
+                    
                     <li>
                         <a href="{{ route('receptions.index') }}" class="ms-2">
-                            <i class="fas fa-list"></i>
+                            <span class="mdi--note-edit"></span>
                             Recepción
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('works.index') }}" class="ms-2">
-                            <i class="fas fa-list"></i>
-                            Trabajos
-                        </a>
+                        <a href="{{ route('owners.index') }}" class="ms-2"><span class="fluent--people-list-16-filled"></span>
+                            Propietarios</a>
                     </li>
+                    <li>
+                        <a href="{{ route('receptions.nexts') }}" class="ms-2"><span class="mdi--car-key"></span>
+                            Proximos Servicios</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('dashboard') }}" class="ms-2"><span class="mdi--car-key"></span>
+                            Dashboard</a>
+                    </li>
+                <li>
 
                     <li>
                         <a href="#pageSubmenu" data-bs-toggle="collapse" aria-expanded="false"
@@ -91,48 +99,48 @@
                             Configuración
                         </a>
                         <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li>
-                                <a href="{{ route('logs.index') }}" class="ms-2"><i class="fa fa-calendar-check"></i>
+                        <a href="{{ route('logs.index') }}" class="ms-2"><span class="ix--log"></span>
                                     Bitácora</a>
                             </li>
                             <li>
-                                <a href="{{ route('users.index') }}" class="ms-2"><i class="fas fa-user"></i>
+                                <a href="{{ route('users.index') }}" class="ms-2"><span class="ic--sharp-people"></span>
                                     Usuarios</a>
                             </li>
+                           
                             <li>
-                                <a href="{{ route('owners.index') }}" class="ms-2"><i class="fas fa-user"></i>
-                                    Propietarios</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('cars.index') }}" class="ms-2"><i class="fas fa-user"></i>
+                                <a href="{{ route('cars.index') }}" class="ms-2"><span class="ph--car-profile"></span>
                                     Carros</a>
                             </li>
                             <li>
-                                <a href="{{ route('statuses.index') }}" class="ms-2"><i class="fas fa-user"></i>
+                                <a href="{{ route('statuses.index') }}" class="ms-2"><span class="material-symbols-light--car-crash-rounded"></span>
                                     Status Vehiculos</a>
                             </li>
                             <li>
-                                <a href="{{ route('brands.index') }}" class="ms-2"><i class="fas fa-user"></i>
+                                <a href="{{ route('brands.index') }}" class="ms-2"><span class="material-symbols--car-tag"></span>
                                     Marcas</a>
                             </li>
                             <li>
-                                <a href="{{ route('colors.index') }}" class="ms-2"><i class="fas fa-user"></i>
+                                <a href="{{ route('colors.index') }}" class="ms-2"><span class="material-symbols--local-car-wash-outline-rounded"></span>
                                     Colores</a>
                             </li>
                             <li>
-                                <a href="{{ route('types.index') }}" class="ms-2"><i class="fas fa-user"></i>
+                                <a href="{{ route('types.index') }}" class="ms-2"><span class="mdi--shield-car"></span>
                                     Modelos</a>
                             </li>
                             <li>
-                                <a href="{{ route('services.index') }}" class="ms-2"><i class="fas fa-user"></i>
+                                <a href="{{ route('services.index') }}" class="ms-2"><span class="mdi--car-key"></span>
                                     Servicios</a>
                             </li>
                             <li>
-                                <a href="{{ route('spareparts.index') }}" class="ms-2"><i class="fas fa-user"></i>
+                                <a href="{{ route('spareparts.index') }}" class="ms-2"><span class="mdi--car-cog"></span>
                                     Refacciones</a>
                             </li>
-                        </ul>
-                    </li>
+                            <li>
+                                <a href="{{ route('works.index') }}" class="ms-2">
+                                    <span class="mdi--mechanic"></span>
+                                    Trabajos
+                                </a>
+                            </li>
                 </ul>
 
                 {{-- <ul class="list-unstyled CTAs">

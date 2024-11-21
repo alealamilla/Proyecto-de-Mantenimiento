@@ -13,7 +13,7 @@
                         <div class="d-flex justify-content-between align-items-center">
 
                             <h4 id="card_title" class="text-primary text-uppercase">
-                                <span class="mdi--note-edit"></span> Recepciones
+                                <span class="mdi--note-edit"></span> Próximas Recepciones
                             </h4>
                             <div class="float-right">
                                 <a href="{{ route('receptions.create') }}" class="btn btn-primary btn-sm float-right"
@@ -37,15 +37,11 @@
                                     <table class="table table-striped table-hover responsive w-100" id="table">
                                         <thead class="thead table-primary text-uppercase">
                                             <tr>
-                                                <th>No</th>
-                                                <th>Fecha</th>
+                                                <th>Ultimo Servicio</th>
                                                 <th>Propietario</th>
                                                 <th>Placas</th>
-                                                <th>Razón</th>
-                                                <th>Status</th>
-                                                <th>Trajo</th>
-                                                <th>Recibio</th>
-                                                <th>Acciones</th>
+                                                <th>Proximo Servicio</th>
+                                                <th>Telefono</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -63,5 +59,5 @@
 @endsection
 
 @push('scripts')
-    <script src="{{asset('js/assignments/index.js')}}" defer></script>
+    <script src="{{asset('js/assignments/next.js')}}" defer></script>
 @endpush

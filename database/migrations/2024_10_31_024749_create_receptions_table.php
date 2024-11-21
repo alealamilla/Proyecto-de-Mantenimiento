@@ -17,8 +17,9 @@ return new class extends Migration
             $table->foreignId('car_id')->nullable()->references('id')->on('cars');
             $table->string("reason")->nullable();
             $table->datetime("reception_date");
+            $table->string("person");
             $table->foreignId('status_id')->nullable()->references('id')->on('statuses');
-            $table->datetime("next_reception");
+            $table->datetime("next_reception")->nullable();
             $table->foreignId('user_id')->nullable()->references('id')->on('users');
             $table->timestamps();
             $table->softDeletes();

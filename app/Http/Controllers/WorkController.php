@@ -8,6 +8,7 @@ use App\Models\Reception;
 use App\Models\Service;
 use App\Models\Sparepart;
 use App\Models\User;
+use Yajra\DataTables\Facades\DataTables;
 
 /**
  * Class WorkController
@@ -46,11 +47,10 @@ class WorkController extends Controller
      */
     public function store(WorkRequest $request)
     {
-        Work::create($request->validated());
+        $work = Work::create($request->validated());
         $this->authorize("create", Work::class);
 
-        return redirect()->route('works.index')
-            ->with('success', 'Work created successfully.');
+        return response()->json($work);
     }
 
     /**
@@ -96,5 +96,13 @@ class WorkController extends Controller
 
         return redirect()->route('works.index')
             ->with('success', 'Work deleted successfully');
+    }
+
+    public function recap(int $id)
+    {
+        $redsheets = Work::with('service', 'sparepart')->where('reception_id', $id)->get();
+
+        return DataTables::of($redsheets) ->make(true);
+
     }
 }

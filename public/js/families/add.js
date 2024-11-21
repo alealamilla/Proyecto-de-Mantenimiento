@@ -1,46 +1,43 @@
 window.onload = function () {
-    BringPets(family_id);
+    BringCars(owner_id);
     
 }
 
-$("#file").on("change", function () {
-    if (document.getElementById("file").value) {
-        let imgElmnt = this;
-
-        let reader = new FileReader();
-        reader.onload = function (imgElmnt) {
-            $("#preview").attr("src", imgElmnt.target.result);
-        }
-        reader.readAsDataURL(imgElmnt.files[0]);
-    } else {
-        $("#preview").attr("src", imgDefault);
-    }
-});
-
-async function BringPets($family) {
-    let pet = await fetch(route("pets.preview", $family));
+async function BringCars($family) {
+    let pet = await fetch(route("cars.preview", $family));
     let answer = await pet.json();
     let html = "";
     answer.forEach(e => {
-        let fileRoute = e.file && e.file.route ? e.file.route : 'img/pic.png'; 
-        fileRoute = fileRoute.startsWith('/') ? fileRoute.substring(1) : fileRoute;
         html += `
         <div class="col-2 mx-4 my-2">
             <div class="row  bg-white d-flex justify-content-between align-items-center"
                 style="border-radius: 10px; ">
-                <div class="col-4 my-2">
-                    <img src="${ruta}${fileRoute}" alt="Foto de la Mascota"
-                        style="width: 60px; height: 60px; object-fit: cover; border-radius: 10px; ">
-                </div>
-                <div class="col-5">
-                    <p>${e.name}</p>
+                <div class="col-9">
+                    <p>Modelo: ${e.brand.name}</p>
+                    <p>Placas: ${e.placas}</p>
                 </div>
                 <div class="col-3">
-                    <a href="${route('pets.edit', e.id)}"> <span class="mdi--edit-circle"></span></a>
+                    <a href="${route('cars.edit', e.id)}"> <span class="mdi--edit-circle"></span></a>
                 </div>
             </div>
          </div>
          `
     });
-    document.getElementById("pet-list").innerHTML = html
+    document.getElementById("car-list").innerHTML = html
+}
+
+async function getTypes(brand_id) {
+    let url = route("types.preview", brand_id)
+    let peticion = await fetch(url)
+    if (peticion.ok) {
+        let respuesta = await peticion.json()
+        let html = ""
+        respuesta.forEach(type => {
+            html += `<option value="${type.id}">${type.name}</option>`;
+        });
+        document.getElementById("type_id").innerHTML = html
+
+
+    }
+
 }
