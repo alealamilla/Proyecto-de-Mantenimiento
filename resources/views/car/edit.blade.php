@@ -5,15 +5,19 @@
 @endsection
 
 @section('content')
-    <section class="content container-fluid">
-        <div class="">
-            <div class="col-md-12">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card bg-primary-soft border-0 p-3">
+                <div class="card-header bg-transparent border-0">
+                    <div class="d-flex justify-content-between align-items-center">
 
-                <div class="card card-default">
-                    <div class="card-header">
-                        <span class="card-title">{{ __('Update') }} Car</span>
+                        <h4 id="card_title" class="text-primary text-uppercase">
+                            <span class="ph--car-profile"></span> Vehículo
+                        </h4>
+                        </div>
                     </div>
-                    <div class="card-body bg-white">
+                    <div class="card-body ">
                         <form method="POST" action="{{ route('cars.update', $car->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf

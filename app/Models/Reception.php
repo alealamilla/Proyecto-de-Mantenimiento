@@ -39,7 +39,7 @@ class Reception extends Model
      *
      * @var array
      */
-    protected $fillable = ['owner_id', 'car_id', 'reason', 'reception_date', 'status_id', 'next_reception', 'user_id'];
+    protected $fillable = ['owner_id', 'car_id', 'reason', 'reception_date', 'status_id', 'person', 'next_reception', 'user_id'];
 
 
     /**

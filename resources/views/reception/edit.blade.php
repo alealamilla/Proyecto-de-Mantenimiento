@@ -5,15 +5,19 @@
 @endsection
 
 @section('content')
-    <section class="content container-fluid">
-        <div class="">
-            <div class="col-md-12">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card bg-primary-soft border-0 p-3">
+                <div class="card-header bg-transparent border-0">
+                    <div class="d-flex justify-content-between align-items-center">
 
-                <div class="card card-default">
-                    <div class="card-header">
-                        <span class="card-title">{{ __('Update') }} Reception</span>
+                        <h4 id="card_title" class="text-primary text-uppercase">
+                            <span class="mdi--note-edit"></span> Recepción
+                        </h4>
                     </div>
-                    <div class="card-body bg-white">
+                </div>
+                    <div class="card-body ">
                         <form method="POST" action="{{ route('receptions.update', $reception->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
@@ -22,8 +26,39 @@
 
                         </form>
                     </div>
+                    <div class="card-header bg-transparent border-0">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h4 id="card_title" class="text-primary text-uppercase">
+                                <span class="mdi--mechanic"></span> Trabajos
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="card-body ">
+                        <form method="POST" onsubmit="NewEntry()" role="form" enctype="multipart/form-data"
+                            id="NewWork">
+                            @csrf
+
+                            @include('work.form')
+
+                        </form>
+                    </div>
+                    <div class="card-body" id="DisplayRedSheet">
+                        <h5 id="card_title" class="text-primary text-uppercase">
+                            <span class="ic--twotone-pets"></span> RESUMEN TRABAJOS REALIZADOS
+                        </h5>
+                        <div id="table-container"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 @endsection
+
+@push('scripts')
+    <script>
+        
+        var Reception_Id = {{ $reception->id }};
+        
+    </script>
+    <script src="{{ asset('js/works.js') }}" defer></script>
+@endpush

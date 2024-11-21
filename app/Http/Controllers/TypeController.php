@@ -86,4 +86,11 @@ class TypeController extends Controller
         return redirect()->route('types.index')
             ->with('success', 'Type deleted successfully');
     }
+
+    public function preview($brand)
+     {
+         $types = Type::where("brand_id", $brand)->get();
+
+         return response()->json($types);
+     }
 }

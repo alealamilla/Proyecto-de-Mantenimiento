@@ -29,6 +29,7 @@ class ReceptionRequest extends FormRequest
 			'reception_date' => 'required|date',
 			'next_reception' => 'nullable|date',
             'user_id' => 'required|integer|exists:users,id',
+            'person' => 'required|string',
         ];
     }
 }

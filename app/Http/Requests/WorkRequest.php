@@ -24,7 +24,7 @@ class WorkRequest extends FormRequest
         return [
             'reception_id' => 'required|integer|exists:receptions,id',
             'service_id' => 'nullable|integer|exists:services,id',
-            'sparepart_id' => 'required|integer|exists:spareparts,id',
+            'sparepart_id' => 'nullable|integer|exists:spareparts,id',
             'time' => 'nullable|date',
             'user_id' => 'required|integer|exists:users,id',
         ];

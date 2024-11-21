@@ -20,7 +20,7 @@ class CarController extends Controller
      */
     public function index()
     {
-        $cars = Car::paginate();
+        $cars = Car::with('brand','owner','color','type')->paginate();
         $this->authorize("viewAny", Car::class);
 
         return view('car.index', compact('cars'))
@@ -46,11 +46,12 @@ class CarController extends Controller
      */
     public function store(CarRequest $request)
     {
-        Car::create($request->validated());
+        $car = Car::create($request->validated());
         $this->authorize("create", Car::class);
+        $id = $car->owner_id;
 
-        return redirect()->route('cars.index')
-            ->with('success', 'Car created successfully.');
+        return redirect()->route('owners.edit', $id)
+            ->with('success', 'Vehículo guardado, puedes agregar más vehículos.');
     }
 
     /**
@@ -58,7 +59,7 @@ class CarController extends Controller
      */
     public function show($id)
     {
-        $car = Car::find($id);
+        $car = Car::with('brand','owner','color','type')->find($id);
         return view('car.show', compact('car'));
     }
 
@@ -68,13 +69,15 @@ class CarController extends Controller
     public function edit($id)
     {
         $car = Car::find($id);
+        $owner_id = $car->owner_id;
+        $owner = Owner::where("id", $owner_id)->first();
         $owners = Owner::all();
         $colors = Color::all();
         $brands = Brand::all();
         $types = Type::all();
         $this->authorize("update", $car);
 
-        return view('car.edit', compact('car','owners','colors','brands','types'));
+        return view('car.edit', compact('car','owners','colors','brands','types','owner'));
     }
 
     /**
@@ -85,8 +88,8 @@ class CarController extends Controller
         $car->update($request->validated());
         $this->authorize("update", $car);
 
-        return redirect()->route('cars.index')
-            ->with('success', 'Car updated successfully');
+        return redirect()->route('owners.index')
+            ->with('success', 'Vehículo Actualizado con exito');
     }
 
     public function destroy($id)
@@ -96,4 +99,12 @@ class CarController extends Controller
         return redirect()->route('cars.index')
             ->with('success', 'Car deleted successfully');
     }
+
+    public function preview($owner)
+     {
+         $cars = Car::with("brand")
+             ->where("owner_id", $owner)->get();
+
+         return response()->json($cars);
+     }
 }

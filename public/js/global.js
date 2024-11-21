@@ -58,82 +58,8 @@ const deleteUser = (id, table) => {
     deleteResource(url, table);
 };
 
-const deleteReason = (id, table) => {
-    const url = route("reasons.destroy", id);
-    deleteResource(url, table);
-};
-
-const deleteArea = (id, table) => {
-    const url = route("areas.destroy", id);
-    deleteResource(url, table);
-};
-
-const deleteRoom = (id, table) => {
-    const url = route("rooms.destroy", id);
-    deleteResource(url, table);
-};
-
-const deleteGenre = (id, table) => {
-    const url = route("genres.destroy", id);
-    deleteResource(url, table);
-}
-
-const deleteReproductiveStatus = (id, table) => {
-    const url = route("reproductive-statuses.destroy", id);
-    deleteResource(url, table);
-}
-
-const deleteFamClassifications = (id, table) => {
-    const url = route("fam-classifications.destroy", id);
-    deleteResource(url, table);
-}
-
-const deletePetClassifications = (id, table) => {
-    const url = route("pet-classifications.destroy", id);
-    deleteResource(url, table);
-}
-
-const deleteShifts = (id, table) => {
-    const url = route("shifts.destroy", id);
-    deleteResource(url, table);
-}
-
-const deletePetsStatuses = (id, table) => {
-    const url = route("pets-statuses.destroy", id);
-    deleteResource(url, table);
-}
-
-const deleteFamily = (id, table) => {
-    const url = route("families.destroy", id);
-    deleteResource(url, table);
-}
-
-const deleteCoverArea = (id, table) => {
-    const url = route("cover-areas.destroy", id);
-    deleteResource(url, table);
-}
-
-const deleteSchedule = (id, table) => {
-    const url = route("schedules.destroy", id);
-    deleteResource(url, table);
-}
-
 const deleteReception = (id, table) => {
     const url = route("receptions.destroy", id);
     deleteResource(url, table);
 }
 
-const deletePrescription = (id, table) => {
-    const url = route("prescriptions.destroy", id);
-    deleteResource(url, table);
-}
-
-const deleteService = (id, table) => {
-    const url = route("services.destroy", id);
-    deleteResource(url, table);
-}
-
-const deleteVaccinationCertificate = (id, table) => {
-    const url = route("vaccine-certificates.destroy", id);
-    deleteResource(url, table);
-}

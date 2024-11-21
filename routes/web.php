@@ -16,6 +16,8 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WorkController;
+use App\Models\Reception;
+use App\Models\Work;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,7 +68,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('colors', ColorController::class);
 
     //Types
-
+    Route::get('/types/preview/{brand}', [TypeController::class, 'preview'])->name('types.preview');
     Route::resource('types', TypeController::class);
 
     //Services
@@ -82,16 +84,20 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('owners', OwnerController::class);
 
     //Cars
-
+    Route::get('/cars/preview/{owner}', [CarController::class, 'preview'])->name('cars.preview');
     Route::resource('cars', CarController::class);
 
     //Receptions
-
+    Route::get('/receptions/list', [ReceptionController::class, 'list'])->name('receptions.list');
+    Route::get('/receptions/follows', [ReceptionController::class, 'follows'])->name('receptions.follows');
+    Route::view('/receptions/next', 'reception.next')->name('receptions.nexts');;
     Route::resource('receptions', ReceptionController::class);
 
     //Works
-
+    Route::get('/works/recap/{id}', [WorkController::class, 'recap'])->name("works.recap");
     Route::resource('works', WorkController::class);
 
-   
+    //DashBoard
+    Route::get('/dashboard', [ReceptionController::class, 'dash'])->name('dashboard');
+    Route::get('/dashboard/data', [ReceptionController::class, 'getStatusData'])->name('dashboard.data');
 });

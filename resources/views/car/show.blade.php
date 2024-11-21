@@ -5,43 +5,43 @@
 @endsection
 
 @section('content')
-    <section class="content container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
-                        <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Car</span>
-                        </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary btn-sm" href="{{ route('cars.index') }}"> {{ __('Back') }}</a>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card bg-primary-soft border-0 p-3">
+                <div class="card-header bg-transparent border-0">
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <h4 id="card_title" class="text-primary text-uppercase">
+                            <span class="ph--car-profile"></span> Vehículo
+                        </h4>
                         </div>
                     </div>
 
-                    <div class="card-body bg-white">
+                    <div class="card-body ">
                         
                         <div class="form-group mb-2 mb20">
-                            <strong>Owner Id:</strong>
-                            {{ $car->owner_id }}
+                            <strong>Propietario:</strong>
+                            {{ $car->owner->name }}
                         </div>
                         <div class="form-group mb-2 mb20">
-                            <strong>Color Id:</strong>
-                            {{ $car->color_id }}
+                            <strong>Color:</strong>
+                            {{ $car->color->name }}
                         </div>
                         <div class="form-group mb-2 mb20">
-                            <strong>Brand Id:</strong>
-                            {{ $car->brand_id }}
+                            <strong>Marca: </strong>
+                            {{ $car->brand->name }}
                         </div>
                         <div class="form-group mb-2 mb20">
-                            <strong>Type Id:</strong>
-                            {{ $car->type_id }}
+                            <strong>Modelo: </strong>
+                            {{ $car->type->name }}
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Placas:</strong>
                             {{ $car->placas }}
                         </div>
                         <div class="form-group mb-2 mb20">
-                            <strong>Year:</strong>
+                            <strong>Año:</strong>
                             {{ $car->year }}
                         </div>
 

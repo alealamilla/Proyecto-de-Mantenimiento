@@ -79,10 +79,16 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('works.index') }}" class="ms-2">
-                            <span class="mdi--mechanic"></span>
-                            Trabajos
-                        </a>
+                        <a href="{{ route('owners.index') }}" class="ms-2"><span class="fluent--people-list-16-filled"></span>
+                            Propietarios</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('receptions.nexts') }}" class="ms-2"><span class="mdi--car-key"></span>
+                            Proximos Servicios</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('dashboard') }}" class="ms-2"><span class="mdi--car-key"></span>
+                            Dashboard</a>
                     </li>
                 <li>
 
@@ -97,13 +103,10 @@
                                     Bitácora</a>
                             </li>
                             <li>
-                                <a href="{{ route('users.index') }}" class="ms-2"><span class=".ic--sharp-people"></span>
+                                <a href="{{ route('users.index') }}" class="ms-2"><span class="ic--sharp-people"></span>
                                     Usuarios</a>
                             </li>
-                            <li>
-                                <a href="{{ route('owners.index') }}" class="ms-2"><span class="fluent--people-list-16-filled"></span>
-                                    Propietarios</a>
-                            </li>
+                           
                             <li>
                                 <a href="{{ route('cars.index') }}" class="ms-2"><span class="ph--car-profile"></span>
                                     Carros</a>
@@ -131,6 +134,12 @@
                             <li>
                                 <a href="{{ route('spareparts.index') }}" class="ms-2"><span class="mdi--car-cog"></span>
                                     Refacciones</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('works.index') }}" class="ms-2">
+                                    <span class="mdi--mechanic"></span>
+                                    Trabajos
+                                </a>
                             </li>
                 </ul>
 

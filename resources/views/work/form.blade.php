@@ -1,17 +1,10 @@
 <div class="row padding-1 p-1">
     <div class="col-md-12">
         
-        <div class="form-group mb-2 mb20">
+        <div class="form-group mb-2 mb20" hidden>
             <label for="reception_id" class="form-label">{{ __('Reception Id') }}</label>
-            <select name="reception_id" class="form-control @error('reception_id') is-invalid @enderror" id="reception_id">
-                <option value="">Seleccione la recpción</option>
-                @foreach ($receptions as $reception)
-                    <option value="{{ $reception->id }}" name="reception_id"
-                        {{ old('reception_id', $work?->reception_id) == $reception->id ? 'selected' : '' }}>
-                        {{ $reception->id }}
-                    </option>
-                @endforeach
-            </select>
+            <input type="text" name="reception_id" class="form-control @error('reception_id') is-invalid @enderror" 
+            value="{{$reception?->id}}" id="reception_id" placeholder="reception_id">
             {!! $errors->first('reception_id', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
         <div class="form-group mb-2 mb20">
@@ -40,28 +33,23 @@
             </select>
             {!! $errors->first('sparepart_id', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
-        <div class="form-group mb-2 mb20">
+        <div class="form-group mb-2 mb20" hidden>
             <label for="time" class="form-label">{{ __('Time') }}</label>
             <input type="datetime-local" name="time" class="form-control @error('time') is-invalid @enderror" value="{{ old('time', $work?->time) }}" id="time" placeholder="Time">
             {!! $errors->first('time', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
-        <div class="form-group mb-2 mb20">
+        <div class="form-group mb-2 mb20" hidden>
             <label for="user_id" class="form-label">{{ __('User Id') }}</label>
-            <select name="user_id" class="form-control @error('user_id') is-invalid @enderror" id="user_id">
-                <option value="">Seleccione al empleado lo realizo</option>
-                @foreach ($users as $user)
-                    <option value="{{ $user->id }}" name="user_id"
-                        {{ old('user_id', $work?->user_id) == $user->id ? 'selected' : '' }}>
-                        {{ $user->name }}
-                    </option>
-                @endforeach
-            </select>
+            <input type="text" name="user_id" class="form-control @error('user_id') is-invalid @enderror" 
+            value="{{ Auth::user()->id }}" id="user_id" placeholder="user_id">
             
             {!! $errors->first('user_id', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
 
     </div>
-    <div class="col-md-12 mt20 mt-2">
-        <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+    <div class="col-12 mt-2 d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-plus"></i>
+            Registrar</button>
     </div>
 </div>
